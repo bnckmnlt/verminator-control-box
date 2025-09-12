@@ -32,7 +32,7 @@ The system is built on **Arduino Mega 2560** and **Arduino Uno**, providing reli
     - Soil sifter
 
 ## System Architecture
-|----------------------------------------------------------------------------------------|
+
 | Component           | Controller    | Function                                         |
 |---------------------|---------------|--------------------------------------------------|
 | BME280              | Arduino Mega  | Temperature & humidity sensing                   |
@@ -44,7 +44,6 @@ The system is built on **Arduino Mega 2560** and **Arduino Uno**, providing reli
 | Fans (4×)           | Arduino Mega  | Soil and ambient aeration                        |
 | Servo Motor         | Arduino Uno   | Conveyor gate                                    |
 | 3× NEMA17 + TB6600  | Arduino Uno   | Conveyor, rake, soil sifter motion               |
-|----------------------------------------------------------------------------------------|
 
 ## Hardware Requirements
 - Arduino Mega 2560
