@@ -14,11 +14,14 @@ void createBeddingJson(JsonObject obj, float temp, float moist, float soilMoist)
   soil_moisture["unit"] = "%";
 }
 
-void createCompostJson(JsonObject obj, float nitrogen, float phosphorus, float potassium, float compostWeight) {
+void createCompostJson(JsonObject obj, float nitrogen, float phosphorus, float potassium, float nitrogen_agro_pct, float phosphorus_agro_pct, float potassium_agro_pct, float compostWeight) {
   JsonObject npk = obj.createNestedObject("npk");
   npk["nitrogen"] = nitrogen;
   npk["phosphorus"] = phosphorus;
   npk["potassium"] = potassium;
+  npk["nitrogen_agro_pct"] = nitrogen_agro_pct;
+  npk["phosphate_agro_pct"] = phosphorus_agro_pct;
+  npk["potash_agro_pct"] = potassium_agro_pct;
   npk["unit"] = "%";
 
   JsonObject compost_weight = obj.createNestedObject("compost_weight");

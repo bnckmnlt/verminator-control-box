@@ -9,6 +9,9 @@ namespace npk {
   int nitrogenPct;
   int phosphorusPct;
   int potassiumPct;
+  int nitrogenAgronomicPct;
+  int phosphorusAgronomicPct;
+  int potassiumAgronomicPct;
 
   void preTransmission() {
     digitalWrite(MAX485_RE_NEG, HIGH);
@@ -38,6 +41,11 @@ namespace npk {
     return ceil(((float)(value - MIN_NPK_VALUE) / (MAX_NPK_VALUE - MIN_NPK_VALUE)) * 100);
   }
 
+  float convertToAgronomicPercentage(int value, int MAX_VALUE) {
+    if (value == -1) return -1;
+    return ceil(((float)(value - MIN_NPK_VALUE) / (MAX_VALUE - MIN_NPK_VALUE)) * 100);
+  }
+
   void read() {
     uint8_t result;
 
@@ -53,6 +61,10 @@ namespace npk {
     nitrogenPct = convertToPercentage(nitrogen);
     phosphorusPct = convertToPercentage(phosphorus) * P2O5_TO_P;
     potassiumPct = convertToPercentage(potassium) * K2O_TO_K;
+
+    nitrogenAgronomicPct = convertToAgronomicPercentage(nitrogen, MAX_N_AGRO_VALUE);
+    phosphorusAgronomicPct = convertToAgronomicPercentage(phosphorus, MAX_PK_AGRO_VALUE);
+    potassiumAgronomicPct = convertToAgronomicPercentage(potassium, MAX_PK_AGRO_VALUE);
   }
 
   void handleError(uint8_t errNum) {

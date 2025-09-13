@@ -85,7 +85,7 @@ void sendtoSerial()
 
   JsonObject layers = doc.createNestedObject("layers");
   createBeddingJson(layers.createNestedObject("bedding"), env::temperature, env::humidity, soil::moisture);
-  createCompostJson(layers.createNestedObject("compost"), npk::nitrogen, npk::phosphorus, npk::potassium, scale::compostKilo);
+  createCompostJson(layers.createNestedObject("compost"), npk::nitrogen, npk::phosphorus, npk::potassium, npk::nitrogenAgronomicPct, npk::phosphorusAgronomicPct, npk::potassiumAgronomicPct, scale::compostKilo);
   createFluidsJson(layers.createNestedObject("fluid"), scale::juiceLiters, scale::waterLiters);
 
   Serial.print("<Payload:");
